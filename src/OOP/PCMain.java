@@ -61,8 +61,7 @@ public class PCMain {
         groupOfPC.add(computer1);
         groupOfPC.add(computer2);
 
-        for (int i = 0; i < groupOfPC.size(); i++) {
-            PC pc = groupOfPC.get(i);
+        for (PC pc : groupOfPC) {
             double sum = pc.getPc().stream().mapToDouble(Motherboard::getPrice)
                     .sum();
             System.out.println(sum + " " + pc.getNameOfAssembly());
