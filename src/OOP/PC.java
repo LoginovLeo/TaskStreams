@@ -37,7 +37,17 @@ public class PC {
     }*/
 
 
+    public void sumOfPrice (List<PC> groupOfPC){
+        for (PC pc : groupOfPC) {
+            double sum = pc.getPc().stream().mapToDouble(Motherboard::getPrice)
+                    .sum();
+            System.out.println(sum + " " + pc.getNameOfAssembly());
 
+
+        }
+
+
+    }
     public void discover(PC pc){
         /*Class<Motherboard> motherboardClass = Motherboard.class;
         Field[] declaredFields = motherboardClass.getDeclaredFields();
