@@ -17,19 +17,19 @@ public class PCMain {
 
         List<PC> groupOfPC = new ArrayList<>();
 
-        Motherboard motherboard = new Motherboard(4, "Asus", "ROG STRIX B550-XE GAMING", "45318551134-662aA4D45", ConnectionType.POWER, 4, 2, 4, 2, 1);
-        PSU psu = new PSU(3, "Power Supply", " VA-PSU-US1", "564665sfa", ConnectionType.POWER);
-        RAM ram = new RAM(1, "Kingston", "DDR4 32Gb 2400MHz", "805353-B21", ConnectionType.POWER);
-        HDD hdd = new HDD(5, "Kingston", "HDD512", "1256aAS-512", ConnectionType.PCI_E);
-        CPU cpu = new CPU(2, "Intel", "I9", "asd5f5", ConnectionType.PCI_E);
-        SSD ssd = new SSD(6, "Samsung", "SSD512", "asd5f5", ConnectionType.PCI_E);
+        Motherboard motherboard = new Motherboard(4, "Asus", "ROG STRIX B550-XE GAMING", "45318551134-662aA4D45", ConnectionType.POWER, 2655.32, 4, 2, 4, 2, 1);
+        PSU psu = new PSU(3, "Power Supply", " VA-PSU-US1", "564665sfa", ConnectionType.POWER, 2569.42);
+        RAM ram = new RAM(1, "Kingston", "DDR4 32Gb 2400MHz", "805353-B21", ConnectionType.POWER, 2322.23);
+        HDD hdd = new HDD(5, "Kingston", "HDD512", "1256aAS-512", ConnectionType.PCI_E, 2560.98);
+        CPU cpu = new CPU(2, "Intel", "I9", "asd5f5", ConnectionType.PCI_E, 2568.00);
+        SSD ssd = new SSD(6, "Samsung", "SSD512", "asd5f5", ConnectionType.PCI_E, 9851.29);
 
-        Motherboard motherboard1 = new Motherboard(4, "Asus", "ROG STRIX B550-XE GAMING", "45318551134-662aA4D45", ConnectionType.POWER, 3, 2, 2, 2, 1);
-        PSU psu1 = new PSU(3, "Power Supply", " VA-PSU-US1", "564665sfaaee", ConnectionType.POWER);
-        RAM ram1 = new RAM(1, "Kingston", "DDR4 32Gb 2400MHz", "805353-B21", ConnectionType.POWER);
-        HDD hdd1 = new HDD(5, "Kingston", "HDD512", "1256aAS-512", ConnectionType.PCI_E);
-        CPU cpu1 = new CPU(2, "Intel", "I9", "asd5f5", ConnectionType.PCI_E);
-        SSD ssd1 = new SSD(25, "Samsung", "SSD512", "asd5f5", ConnectionType.PCI_E);
+        Motherboard motherboard1 = new Motherboard(4, "Asus", "ROG STRIX B550-XE GAMING", "45318551134-662aA4D45", ConnectionType.POWER, 555.25, 3, 2, 2, 2, 1);
+        PSU psu1 = new PSU(3, "Power Supply", " VA-PSU-US1", "564665sfaaee", ConnectionType.POWER, 3256.25);
+        RAM ram1 = new RAM(1, "Kingston", "DDR4 32Gb 2400MHz", "805353-B21", ConnectionType.POWER, 2566.02);
+        HDD hdd1 = new HDD(5, "Kingston", "HDD512", "1256aAS-512", ConnectionType.PCI_E, 2981.25);
+        CPU cpu1 = new CPU(2, "Intel", "I9", "asd5f5", ConnectionType.PCI_E, 3645.54);
+        SSD ssd1 = new SSD(25, "Samsung", "SSD512", "asd5f5", ConnectionType.PCI_E, 23651.25);
 
 
         componentsOfFirstPC.add(motherboard);
@@ -59,14 +59,24 @@ public class PCMain {
         PC computer2 = new PC(componentsOfSecondPC, "MySecondPC");
 
         groupOfPC.add(computer1);
-        //groupOfPC.add(computer2);
+        groupOfPC.add(computer2);
 
-        groupOfPC.stream()
-                .flatMap(e->e.pc.stream().map(Motherboard::getSerialNumber))
-                /*.flatMap(l->l.pc.stream().map(Motherboard::getId))*/
+        for (int i = 0; i < groupOfPC.size(); i++) {
+            PC pc = groupOfPC.get(i);
+            double sum = pc.getPc().stream().mapToDouble(Motherboard::getPrice)
+                    .sum();
+            System.out.println(sum + " " + pc.getNameOfAssembly());
 
-                //.collect(Collectors.toList())
-                .forEach(System.out::println);
+
+        }
+
+
+
+
+
+
+        //.collect(Collectors.toList())
+                //.forEach(System.out::println);
 
 
         //computer1.getPCInformation(computer1);

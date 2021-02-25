@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class PC {
-    RAM ram;
-    CPU cpu;
-    Motherboard motherboard;
-    PSU psu;
-    SSD ssd;
-    HDD hdd;
+
     List<Motherboard> pc;
     String nameOfAssembly;
+
+    public List<Motherboard> getPc() {
+        return pc;
+    }
 
     public PC(List<Motherboard> pc, String nameOfAssembly) {
         this.pc = pc;
@@ -24,8 +23,11 @@ public class PC {
     public PC() {
     }
 
+    public String getNameOfAssembly() {
+        return nameOfAssembly;
+    }
 
-  /*  public PC(RAM ram, CPU cpu, Motherboard motherboard, PSU psu, SSD ssd, HDD hdd) {
+/*  public PC(RAM ram, CPU cpu, Motherboard motherboard, PSU psu, SSD ssd, HDD hdd) {
         this.ram = ram;
         this.cpu = cpu;
         this.motherboard = motherboard;

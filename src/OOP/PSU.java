@@ -11,12 +11,9 @@ public class PSU extends Motherboard  {
     public PSU() {
     }
 
-    public PSU(int id, String producer, String model, String serialNumber, ConnectionType connectionType) {
-        super(id, producer, model, serialNumber, connectionType);
-
-
+    public PSU(int id, String producer, String model, String serialNumber, ConnectionType connectionType, double price) {
+        super(id, producer, model, serialNumber, connectionType, price);
     }
-
 
     public void powerOn(List<Motherboard> a) {
 

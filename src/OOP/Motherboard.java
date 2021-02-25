@@ -1,7 +1,5 @@
 package OOP;
 
-import jdk.jfr.StackTrace;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,18 +15,20 @@ public class Motherboard {
     String model;
     String serialNumber;
     ConnectionType connectionType;
+    double price;
 
 
     public Motherboard() {
 
     }
 
-    public Motherboard(int id, String producer, String model, String serialNumber, ConnectionType connectionType) {
+    public Motherboard(int id, String producer, String model, String serialNumber, ConnectionType connectionType, double price) {
         this.id = id;
         this.model = model;
         this.producer = producer;
         this.serialNumber = serialNumber;
         this.connectionType = connectionType;
+        this.price =  price;
 
     }
 
@@ -44,6 +44,10 @@ public class Motherboard {
         return producer;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     public String getModel() {
         return model;
     }
@@ -52,13 +56,14 @@ public class Motherboard {
         return serialNumber;
     }
 
-    public Motherboard(int id, String producer, String model, String serialNumber, ConnectionType connectionType, int power, int pciE, int ddr4, int sata, int socket) {
+    public Motherboard(int id, String producer, String model, String serialNumber, ConnectionType connectionType, double price, int power, int pciE, int ddr4, int sata, int socket) {
 
         this.id = id;
         this.model = model;
         this.producer = producer;
         this.serialNumber = serialNumber;
         this.connectionType = connectionType;
+        this.price = price;
         this.power = power;
         this.pciE = pciE;
         this.ddr4 = ddr4;

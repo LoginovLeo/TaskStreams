@@ -2,10 +2,11 @@ package OOP;
 
 public class SSD extends Motherboard{
 
-    public SSD(int id, String producer, String model, String serialNumber, ConnectionType connectionType) {
-        super(id, producer, model, serialNumber, connectionType);
-
+    public SSD(int id, String producer, String model, String serialNumber, ConnectionType connectionType, double price) {
+        super(id, producer, model, serialNumber, connectionType, price);
     }
+
+
 
     @Override
     public String toString() {
