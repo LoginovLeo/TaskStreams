@@ -281,7 +281,12 @@ public class Motherboard {
         }
 
     }
-
+    public String tosString() {
+        return "Motherboard connected : " +
+                "id=" + id +
+                ", producer='" + producer + '\'' +
+                ", model='" + model + '\'';
+    }
 
     @Override
     public String toString() {

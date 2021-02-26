@@ -1,10 +1,9 @@
 package OOP;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PC {
 
@@ -38,16 +37,46 @@ public class PC {
 
 
     public void sumOfPrice (List<PC> groupOfPC){
+        List<Double> list = new ArrayList<>();
         for (PC pc : groupOfPC) {
             double sum = pc.getPc().stream().mapToDouble(Motherboard::getPrice)
                     .sum();
-            System.out.println(sum + " " + pc.getNameOfAssembly());
-
-
+            list.add(sum);
         }
+        List<Double> collectSorted = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        System.out.println(collectSorted);
+
+    }
+
+    public void listOfMotherboards(List<PC> groupOfPC){
+        List<Motherboard> motherboards = new ArrayList<>();
+        groupOfPC.stream()
+                .map(PC::getPc)
+
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+        }
+
+    public void averagePrice(List<PC> groupOfPC) throws NoSuchElementException{
+        List<Double> list = new ArrayList<>();
+        for (PC pc : groupOfPC){
+            try {
+                double average = pc.getPc().stream().mapToDouble(Motherboard::getPrice).average().getAsDouble();
+                System.out.println(average);
+                list.add(average);
+            } catch (NoSuchElementException e){
+                e.printStackTrace();
+            }
+
+         }
+        List<Double> collectSorted = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        collectSorted.forEach(System.out::println);
+
+
 
 
     }
+
     public void discover(PC pc){
         /*Class<Motherboard> motherboardClass = Motherboard.class;
         Field[] declaredFields = motherboardClass.getDeclaredFields();
