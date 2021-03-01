@@ -18,6 +18,7 @@ public class Motherboard {
     double price;
 
 
+
     public Motherboard() {
 
     }
@@ -31,6 +32,8 @@ public class Motherboard {
         this.price =  price;
 
     }
+
+
 
     public ConnectionType getConnectionType() {
         return connectionType;

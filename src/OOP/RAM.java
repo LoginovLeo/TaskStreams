@@ -7,6 +7,7 @@ public class RAM extends Motherboard {
         super(id, producer, model, serialNumber, connectionType, price);
     }
 
+
     @Override
     public String toString() {
         return "RAM connected : " +
