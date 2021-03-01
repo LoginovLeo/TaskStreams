@@ -26,17 +26,8 @@ public class PC {
         return nameOfAssembly;
     }
 
-/*  public PC(RAM ram, CPU cpu, Motherboard motherboard, PSU psu, SSD ssd, HDD hdd) {
-        this.ram = ram;
-        this.cpu = cpu;
-        this.motherboard = motherboard;
-        this.psu = psu;
-        this.ssd = ssd;
-        this.hdd = hdd;
-    }*/
 
-
-    public void sumOfPrice (List<PC> groupOfPC){
+    public void sumOfPrice(List<PC> groupOfPC) {
         List<Double> list = new ArrayList<>();
         for (PC pc : groupOfPC) {
             double sum = pc.getPc().stream().mapToDouble(Motherboard::getPrice)
@@ -44,50 +35,63 @@ public class PC {
             list.add(sum);
         }
         List<Double> collectSorted = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
-        System.out.println(collectSorted);
+        collectSorted.forEach(System.out::println);
 
     }
 
-    public void listOfMotherboards(List<PC> groupOfPC){
-        List<Motherboard> motherboards = new ArrayList<>();
+    public void listOfMotherboards(List<PC> groupOfPC) {
+
         groupOfPC.stream()
-                .map(PC::getPc)
-
-                .collect(Collectors.toList())
+                .flatMap(e -> e.pc.stream())
+                .collect(Collectors.filtering(
+                        e -> e.getClass().equals(Motherboard.class),
+                        Collectors.toList()))
                 .forEach(System.out::println);
-        }
+    }
 
-    public void averagePrice(List<PC> groupOfPC) throws NoSuchElementException{
+    public void memoryCapacity(List<PC> groupOfPC) {
+        groupOfPC.stream()
+                .map(e -> e.pc.stream().collect(Collectors.filtering(
+                        l -> l.getClass().equals(HDD.class),
+                        Collectors.toList())))
+                .forEach(System.out::println);
+
+
+
+    }
+
+
+    public void averagePriceOfPC(List<PC> groupOfPC) throws NoSuchElementException {
         List<Double> list = new ArrayList<>();
-        for (PC pc : groupOfPC){
+        for (PC pc : groupOfPC) {
             try {
                 double average = pc.getPc().stream().mapToDouble(Motherboard::getPrice).average().getAsDouble();
-                System.out.println(average);
                 list.add(average);
-            } catch (NoSuchElementException e){
+            } catch (NoSuchElementException e) {
                 e.printStackTrace();
             }
 
-         }
-        List<Double> collectSorted = list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
-        collectSorted.forEach(System.out::println);
-
-
-
-
-    }
-
-    public void discover(PC pc){
-        /*Class<Motherboard> motherboardClass = Motherboard.class;
-        Field[] declaredFields = motherboardClass.getDeclaredFields();
-        for (Field field: declaredFields){
-            System.out.println(field);
-        }*/
-
-
-
-
+        }
+        List<Double> sortedAveragePrice = list.stream()
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList())
+                .stream()
+                .limit(3).collect(Collectors.toList());
+        sortedAveragePrice.forEach(System.out::println);
 
 
     }
+
+
+    public void uniqueManufacturer(List<PC> groupOfPC) {
+        groupOfPC.stream()
+                .flatMap(e -> e.pc.stream())
+
+                .collect(Collectors.toList())
+                .stream().map(e -> e.producer.toUpperCase())
+                .distinct()
+                .forEach(System.out::println);
+
+    }
+
 }
