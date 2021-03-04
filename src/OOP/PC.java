@@ -52,10 +52,29 @@ public class PC {
     public void memoryCapacity(List<PC> groupOfPC) {
         groupOfPC.stream()
                 .map(e -> e.pc.stream().collect(Collectors.filtering(
-                        l -> l.getClass().equals(HDD.class),
+                        l -> l.getClass().equals(RAM.class),
                         Collectors.toList())))
                 .forEach(System.out::println);
 
+
+    }
+
+
+    public void memoryCapacity1(List<PC> groupOfPC) {
+        int counter = 0;
+        for (PC pc : groupOfPC) {
+            int sum = pc.getPc().stream()
+                    .collect(Collectors.filtering(e -> e.getClass().equals(RAM.class), Collectors.toList()))
+                    .stream().mapToInt(e -> e.memoryVolume)
+                    .sum();
+
+            if (sum > 3000) {
+                counter++;
+                System.out.println(pc.nameOfAssembly);
+            }
+
+        }
+        System.out.println(counter);
 
 
     }
@@ -86,7 +105,6 @@ public class PC {
     public void uniqueManufacturer(List<PC> groupOfPC) {
         groupOfPC.stream()
                 .flatMap(e -> e.pc.stream())
-
                 .collect(Collectors.toList())
                 .stream().map(e -> e.producer.toUpperCase())
                 .distinct()

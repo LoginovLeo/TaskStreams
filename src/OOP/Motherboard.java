@@ -16,6 +16,7 @@ public class Motherboard {
     String serialNumber;
     ConnectionType connectionType;
     double price;
+    int memoryVolume;
 
 
 
@@ -30,6 +31,17 @@ public class Motherboard {
         this.serialNumber = serialNumber;
         this.connectionType = connectionType;
         this.price =  price;
+
+    }
+
+    public Motherboard(int id, String producer, String model, String serialNumber, ConnectionType connectionType, double price, int memoryVolume) {
+        this.id = id;
+        this.model = model;
+        this.producer = producer;
+        this.serialNumber = serialNumber;
+        this.connectionType = connectionType;
+        this.price =  price;
+        this.memoryVolume =  memoryVolume;
 
     }
 
