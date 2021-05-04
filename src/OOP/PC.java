@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 
 public class PC {
 
-    List<Motherboard> pc;
-    String nameOfAssembly;
+    private List<Motherboard> pc;
+    private String nameOfAssembly;
 
     public List<Motherboard> getPc() {
         return pc;
@@ -65,7 +65,7 @@ public class PC {
         for (PC pc : groupOfPC) {
             int sum = pc.getPc().stream()
                     .collect(Collectors.filtering(e -> e.getClass().equals(RAM.class), Collectors.toList()))
-                    .stream().mapToInt(e -> e.memoryVolume)
+                    .stream().mapToInt(Motherboard::getMemoryVolume)
                     .sum();
 
             if (sum > 3000) {
@@ -106,7 +106,7 @@ public class PC {
         groupOfPC.stream()
                 .flatMap(e -> e.pc.stream())
                 .collect(Collectors.toList())
-                .stream().map(e -> e.producer.toUpperCase())
+                .stream().map(e -> e.getProducer().toUpperCase())
                 .distinct()
                 .forEach(System.out::println);
 

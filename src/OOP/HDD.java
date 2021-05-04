@@ -6,11 +6,5 @@ public class HDD extends Motherboard{
         super(id, producer, model, serialNumber, connectionType, price);
     }
 
-    @Override
-    public String toString() {
-        return "HDD connected : " +
-                "id=" + id +
-                ", producer='" + producer + '\'' +
-                ", model='" + model + '\'';
-    }
+
 }

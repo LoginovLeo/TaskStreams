@@ -6,12 +6,5 @@ public class SoundCard extends Motherboard{
     }
 
 
-    @Override
-    public String toString() {
-        return "SoundCard{" +
-                "id=" + id +
-                ", producer='" + producer + '\'' +
-                ", model='" + model + '\'' +
-                '}';
-    }
+
 }

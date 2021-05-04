@@ -56,13 +56,7 @@ public class PSU extends Motherboard  {
     }
 
 
-    @Override
-    public String toString() {
-        return "PSU connected : " +
-                "id=" + id +
-                ", producer='" + producer + '\'' +
-                ", model='" + model + '\'';
-    }
+
 
 
 }

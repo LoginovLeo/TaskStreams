@@ -5,12 +5,5 @@ public class VideoCard extends Motherboard{
         super(id, producer, model, serialNumber, connectionType, price);
     }
 
-    @Override
-    public String toString() {
-        return "VideoCard{" +
-                "id=" + id +
-                ", producer='" + producer + '\'' +
-                ", model='" + model + '\'' +
-                '}';
-    }
+
 }

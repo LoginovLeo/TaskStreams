@@ -5,20 +5,30 @@ import java.util.List;
 import java.util.Map;
 
 public class Motherboard {
-    int id;
-    int power;
-    int pciE;
-    int ddr4;
-    int sata;
-    int socket;
-    String producer;
-    String model;
-    String serialNumber;
-    ConnectionType connectionType;
-    double price;
-    int memoryVolume;
+    private int id;
+    private int power;
+    private int pciE;
+    private int ddr4;
+    private int sata;
+    private int socket;
+    private String producer;
+    private String model;
+    private String serialNumber;
+    private ConnectionType connectionType;
+    private double price;
+    private int memoryVolume;
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
+    public int getMemoryVolume() {
+        return memoryVolume;
+    }
+
+    public void setMemoryVolume(int memoryVolume) {
+        this.memoryVolume = memoryVolume;
+    }
 
     public Motherboard() {
 
@@ -296,16 +306,12 @@ public class Motherboard {
         }
 
     }
-    public String tosString() {
-        return "Motherboard connected : " +
-                "id=" + id +
-                ", producer='" + producer + '\'' +
-                ", model='" + model + '\'';
-    }
+
 
     @Override
     public String toString() {
-        return "Motherboard connected : " +
+        String simpleName = getClass().getSimpleName();
+        return "Component "  + simpleName + " connected : " +
                 "id=" + id +
                 ", producer='" + producer + '\'' +
                 ", model='" + model + '\'';

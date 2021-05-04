@@ -8,11 +8,5 @@ public class RAM extends Motherboard {
     }
 
 
-    @Override
-    public String toString() {
-        return "RAM connected : " +
-                "id=" + id +
-                ", producer='" + producer + '\'' +
-                ", model='" + model + '\'' ;
-    }
+
 }
